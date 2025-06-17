@@ -12,15 +12,23 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>UnitPrice</th>
           <th>Description</th>
+          <th>Internal Reference</th>
+          <th>Unit Price</th>
+          <th>State</th>
+          <th>Unit Measure</th>
+          <th>Creation Date</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of basicTable.data">
           <td>{{ data.name }}</td>
-          <td>{{ data.unitPrice }}</td>
           <td>{{ data.description }}</td>
+          <td>{{ data.internalReference }}</td>
+          <td>{{ data.unitPrice }}</td>
+          <td>{{ data.state }}</td>
+          <td>{{ data.unitMeasure }}</td>
+          <td>{{ data.creationDate }}</td>
           <td>
             <a nz-button nzType="link">Details</a>
             <nz-divider nzType="vertical"></nz-divider>
