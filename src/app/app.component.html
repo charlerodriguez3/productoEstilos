@@ -1,2 +1,36 @@
-<button nz-button nzType="primary">Primary</button>
+<div class="app-container">
+  <header class="app-header">
+    <h1 class="app-title">Products</h1>
+    <p class="app-subtitle">Current Products</p>
+    <nz-button-group>
+        <button nz-button nzType="primary">Create</button>
+    </nz-button-group>
+  </header>
+
+  <div class="table-wrapper">
+    <nz-table #basicTable [nzData]="dataSet" [nzPageSize]="10">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>UnitPrice</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{ data.name }}</td>
+          <td>{{ data.unitPrice }}</td>
+          <td>{{ data.description }}</td>
+          <td>
+            <a nz-button nzType="link">Details</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-button nzType="link">Edit</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a nz-button nzType="link" nzDanger>Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>
 <router-outlet/>
