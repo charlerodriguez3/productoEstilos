@@ -1,4 +1,4 @@
-export class AuthResponse{
-  token?: string;
+export interface AuthResponse{
+  token: string;
   expiresIn?: number;
 }
