@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
@@ -9,7 +10,7 @@ import { Product } from './models/Product';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NzTableModule, NzButtonModule, NzDividerModule, NzTagModule],
+  imports: [CommonModule,RouterOutlet, NzTableModule, NzButtonModule, NzDividerModule, NzTagModule],
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
