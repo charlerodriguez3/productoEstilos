@@ -32,7 +32,6 @@ export class CreateProductComponent implements OnInit {
       description: [null, [Validators.required]], 
       unitPrice: [null, [Validators.required, Validators.min(0)]],
       internalReference: [null, [Validators.required]], 
-      state: [true, [Validators.required]],
       unitMeasure: [null, [Validators.required]], 
       creationDate: [new Date()]
     });

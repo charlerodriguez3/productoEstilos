@@ -35,14 +35,6 @@
         <input nz-input formControlName="unitMeasure" id="unitMeasure" />
       </nz-form-control>
     </nz-form-item>
-
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="state">Active</nz-form-label>
-      <nz-form-control [nzSm]="14" [nzXs]="24">
-        <nz-switch formControlName="state" id="state"></nz-switch>
-      </nz-form-control>
-    </nz-form-item>
-
     <nz-form-item nz-row class="register-area">
       <nz-form-control [nzSpan]="14" [nzOffset]="6">
         <button nz-button nzType="primary" [disabled]="!productForm.valid">Create Product</button>
