@@ -4,20 +4,21 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzTagModule } from 'ng-zorro-antd/tag';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet} from '@angular/router';
 import { ProductService } from './services/productService';
 import { Product } from './models/Product';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule,RouterOutlet, NzTableModule, NzButtonModule, NzDividerModule, NzTagModule],
+  standalone: true,
+  imports: [CommonModule,  RouterOutlet, NzTableModule, NzButtonModule, NzDividerModule, NzTagModule],
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   dataSet: Product[] = [];
   isLoading = false;
 
-  constructor(private apiService: ProductService) { }
+  constructor(private apiService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginAndLoadProducts();
@@ -47,17 +48,9 @@ export class AppComponent implements OnInit {
       }
     });
   }
-  viewDetails(product: Product): void {
-    console.log('Viewing details for:', product);
-    this.apiService.getProductById(product.id).subscribe({
-      next: (details) => console.log('Details:', details),
-      error: (err) => console.error('Error getting details:', err)
-    });
-  }
   
-  editProduct(product: Product): void {
-    console.log('Editing product:', product);
-    // Aquí puedes abrir un modal o navegar a una vista de edición
+  editProduct(id: number): void {
+    this.router.navigate(['/edit-product/', id]);
   }
   
   deleteProduct(id: number): void {
@@ -72,22 +65,6 @@ export class AppComponent implements OnInit {
   }
   
   createProduct(): void {
-    const newProduct: Omit<Product, 'id'> = {
-      name: 'Nuevo producto',
-      description: 'Creado desde Angular',
-      unitPrice: 100,
-      internalReference: 'REF-123',
-      state: true,
-      unitMeasure: 'Unidad',
-      creationDate: new Date()
-    };
-  
-    this.apiService.createProduct(newProduct).subscribe({
-      next: (created) => {
-        console.log('Product created:', created);
-        this.dataSet.push(created);
-      },
-      error: (err) => console.error('Error creating product:', err)
-    });
+    this.router.navigate(['/create-product']);
   }
 }

@@ -35,9 +35,7 @@
           <td>{{ data.unitMeasure || '-' }}</td>
           <td>{{ data.creationDate }}</td>
           <td>
-            <a nz-button nzType="link" (click)="viewDetails(data)">Details</a>
-            <nz-divider nzType="vertical"></nz-divider>
-            <a nz-button nzType="link" (click)="editProduct(data)">Edit</a>
+            <a nz-button nzType="link" (click)="editProduct(data.id)">Edit</a>
             <nz-divider nzType="vertical"></nz-divider>
             <a nz-button nzType="link" nzDanger (click)="deleteProduct(data.id)">Delete</a>
           </td>
@@ -46,5 +44,4 @@
     </nz-table>
   </div>
 </div>
-
 <router-outlet></router-outlet>

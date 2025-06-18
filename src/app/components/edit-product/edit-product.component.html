@@ -1,0 +1,64 @@
+<div class="product-form-container">
+  <h2>Edit Product</h2>
+
+  <div *ngIf="isLoading" style="text-align: center; padding: 20px;">
+    <nz-spin nzSimple></nz-spin> Loading Product Data...
+  </div>
+
+  <form nz-form [formGroup]="productForm" (ngSubmit)="submitForm()" *ngIf="!isLoading">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">Name</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input the product name!">
+        <input nz-input formControlName="name" id="name" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="description">Description</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input the description!">
+        <textarea nz-input formControlName="description" id="description" rows="4"></textarea>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="unitPrice">Unit Price</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input the unit price!">
+        <nz-input-number formControlName="unitPrice" id="unitPrice" [nzMin]="0" [nzStep]="0.01"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="internalReference">Internal Reference</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input the internal reference!">
+        <input nz-input formControlName="internalReference" id="internalReference" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="unitMeasure">Unit Measure</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input the unit of measure!">
+        <input nz-input formControlName="unitMeasure" id="unitMeasure" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="state">Active</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please select the product state!">
+        <nz-switch formControlName="state" id="state"></nz-switch>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="creationDate">Creation Date</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <input nz-input formControlName="creationDate" id="creationDate" readonly />
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary" [disabled]="!productForm.valid">Update Product</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

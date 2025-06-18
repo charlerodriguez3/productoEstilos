@@ -8,12 +8,12 @@ import { AuthResponse } from '../models/AuthResponse';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'https://localhost:7058/api'; // Asegúrate que coincide con tu backend
+  private baseUrl = 'https://localhost:7058/api';
   private authToken: string | null = null;
 
   constructor(private http: HttpClient) { }
 
-  // Llama al endpoint real para obtener el token (sin credenciales)
+
   token(): Observable<AuthResponse> {
     return new Observable(observer => {
       this.http.post<AuthResponse>(`${this.baseUrl}/auth/token`, {}).subscribe({
@@ -46,24 +46,22 @@ export class ProductService {
   }
 
   createProduct(product: Omit<Product, 'id'>): Observable<Product> {
-    return this.http.post<Product>(`${this.baseUrl}/productos`, product, {
+    return this.http.post<Product>(`${this.baseUrl}/product`, product, {
       headers: this.getAuthHeaders()
     });
   }
 
   updateProduct(id: number, product: Partial<Product>): Observable<void> {
-    return this.http.put<void>(`${this.baseUrl}/productos/${id}`, product, {
+    return this.http.put<void>(`${this.baseUrl}/product/${id}`, product, {
       headers: this.getAuthHeaders()
     });
   }
 
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/productos/${id}`, {
+    return this.http.delete<void>(`${this.baseUrl}/product/${id}`, {
       headers: this.getAuthHeaders()
     });
   }
-
-  // Opcional: puedes guardar el token en localStorage si quieres persistencia
   saveToken(token: string): void {
     this.authToken = token;
     localStorage.setItem('auth_token', token);
